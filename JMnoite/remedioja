@@ -1,0 +1,32 @@
+CREATE DATABASE remedioja CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
+USE remedioja;
+
+CREATE TABLE usuarios (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nome VARCHAR(100) NOT NULL,
+    email VARCHAR(100) UNIQUE NOT NULL,
+    senha VARCHAR(255) NOT NULL
+);
+
+CREATE TABLE medicamentos_agendados (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    usuario_id INT NOT NULL,
+    nome VARCHAR(100) NOT NULL,
+    dosagem VARCHAR(100),
+    data_hora DATETIME,
+    FOREIGN KEY (usuario_id) REFERENCES usuarios(id)
+);
+
+CREATE TABLE remedios (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nome VARCHAR(100) NOT NULL,
+    imagem VARCHAR(255) NOT NULL,
+    link TEXT NOT NULL
+);
+INSERT INTO remedios (nome, imagem, link) VALUES
+('Dipirona', 'dipirona.jpg', 'https://www.saojoaofarmacias.com.br/...'),
+('Paracetamol', 'paracetamol.jpg', 'https://www.saojoaofarmacias.com.br/...'),
+('Ibuprofeno', 'ibuprofeno.jpg', 'https://www.saojoaofarmacias.com.br/...'),
+('Amoxicilina', 'amoxicilina.jpg', 'https://www.saojoaofarmacias.com.br/...'),
+('Losartana', 'losartana.jpg', 'https://www.saojoaofarmacias.com.br/...'),
+('Sinvastatina', 'sinvastatina.jpg', 'https://www.saojoaofarmacias.com.br/...');

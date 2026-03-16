@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bem-vindo</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap');
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html, body {
+      height: 100%;
+      width: 100%;
+      background: #111;
+      font-family: 'Montserrat', sans-serif;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .text {
+      position: absolute;
+      font-size: 2rem;
+      font-weight: bold;
+      color: white;
+      opacity: 0.1;
+      animation: float 5s linear infinite;
+    }
+
+    @keyframes float {
+      0% {
+        transform: translateY(100vh) rotate(0deg);
+        opacity: 0.1;
+      }
+      100% {
+        transform: translateY(-10vh) rotate(360deg);
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <script>
+    const texts = ["Bem-vindo", "Remédio Já", "Sua saúde em dia", "Organize", "Proteja", "Cuide"];
+    const number_of_particles = 12;
+
+    for (let i = 0; i < texts.length; i++) {
+      document.body.classList.add("background-" + i);
+    }
+
+    for (let i = 0; i < texts.length; i++) {
+      for (let j = 0; j < number_of_particles; j++) {
+        const el = document.createElement("div");
+        el.className = "text";
+        el.innerText = texts[i];
+        el.style.left = `${Math.random() * 100}%`;
+        el.style.top = `${Math.random() * 100}%`;
+        el.style.animationDuration = `${Math.random() * 3 + 3}s`;
+        el.style.fontSize = `${Math.random() * 30 + 10}px`;
+        document.body.appendChild(el);
+      }
+    }
+  </script>
+</body>
+</html>
